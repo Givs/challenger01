@@ -60,7 +60,20 @@ function showInitialMessage(){
     tasksList.innerHTML = `<h2>You don't have a task!</h2>`
 }
 
-if(!(tasks.length == 0)){
+
+input.addEventListener("keyup", (e) => {
+    let inputTask = input.value;
+    if (e.key == "Enter") {
+      isTask(inputTask)
+    }
+  });
+  
+  button.addEventListener("click", (e) => {
+    let inputTask = input.value;
+    isTask(inputTask)
+  });
+
+if(tasks){
     showtasks("all");
 }else{
     showInitialMessage()
@@ -92,14 +105,3 @@ function isTask(inputTask){
 }
 
 
-input.addEventListener("keyup", (e) => {
-  let inputTask = input.value;
-  if (e.key == "Enter") {
-    isTask(inputTask)
-  }
-});
-
-button.addEventListener("click", (e) => {
-  let inputTask = input.value;
-  isTask(inputTask)
-});
